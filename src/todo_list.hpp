@@ -1,11 +1,9 @@
 #pragma once
 
 #include <userver/clients/http/component.hpp>
-#include <userver/components/minimal_server_component_list.hpp>
-#include <userver/server/handlers/ping.hpp>
-#include <userver/server/handlers/tests_control.hpp>
-#include <userver/testsuite/testsuite_support.hpp>
-#include <userver/utils/daemon_run.hpp>
+#include <userver/components/component_list.hpp>
+#include <userver/storages/postgres/cluster.hpp>
+#include <userver/storages/postgres/component.hpp>
 
 namespace service_todo_list {
 
@@ -20,7 +18,7 @@ class TodoTaskHandler final : public server::handlers::HttpHandlerBase {
       server::request::RequestContext&) const override;
 
  private:
-  std::string GetValue(const server::http::HttpRequest& request user_ip) const;
+  std::string GetValue(const server::http::HttpRequest& request) const;
   std::string DeleteValue(const server::http::HttpRequest& request) const;
   std::string PutValue(const server::http::HttpRequest& request) const;
   std::string PatchValue(const server::http::HttpRequest& request) const;
